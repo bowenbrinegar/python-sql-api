@@ -45,8 +45,6 @@ def films_by_actor(firstname=None, lastname=None):
     actor = session.query(Actor).filter_by(first_name=firstname, last_name=lastname).first()
     actor_match = actor_to_dict(actor)
 
-    print(actor_match["id"])
-
     film_refs = session.query(FilmLookup).filter_by(actor_id=actor_match["id"]).all()
     film_refs = film_ref_to_dict(film_refs)
 
